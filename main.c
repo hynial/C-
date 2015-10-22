@@ -39,6 +39,61 @@ void chooseSort(int arr[],int len){
         }
     }
 }
+void chooseSort1(int arr[],int len){
+    int half = len / 2;
+    for(int i = 0; i < half; i++){
+        int arrIndex = i,tmp;
+        int arrIndex1 = len - 1 - i,tmp1;
+        //        Method 1
+        //        for(int j = i+1;j < len - i + 1; j++){
+        //            if(arr[arrIndex] > arr[j]){
+        //                arrIndex = j;
+        //            }
+        //        }
+        //        if(i != arrIndex){
+        //            tmp = arr[i];
+        //            arr[i] = arr[arrIndex];
+        //            arr[arrIndex] = tmp;
+        //        }
+        //        for(int j = i;j < len - i - 1; j++){
+        //            if(arr[arrIndex1] < arr[j]){
+        //                arrIndex1 = j;
+        //            }
+        //        }
+        //        if(i != len - 1 - i && len - 1 - i != arrIndex1){
+        //            tmp1 = arr[len - 1 - i];
+        //            arr[len - 1 - i] = arr[arrIndex1];
+        //            arr[arrIndex1] = tmp1;
+        //        }
+        //        Method 2
+        for(int j = i;j < len - i; j++){
+            if(arr[arrIndex] > arr[j]){
+                arrIndex = j;
+            }
+            if(arr[arrIndex1] < arr[j]){
+                arrIndex1 = j;
+            }
+        }
+        if(i != arrIndex){
+            tmp = arr[i];
+            arr[i] = arr[arrIndex];
+            arr[arrIndex] = tmp;
+        }
+        if(arrIndex1 == i){
+            arrIndex1 = arrIndex;
+        }
+        if(i != len - 1 - i && len - 1 - i != arrIndex1){
+            tmp1 = arr[len - 1 - i];
+            arr[len - 1 - i] = arr[arrIndex1];
+            arr[arrIndex1] = tmp1;
+        }
+        
+        for(int m = 0; m < len; m++){
+            printf("%d-",arr[m]);
+        }
+        printf("\n");
+    }
+}
 int main(int argc, const char * argv[]) {
     // insert code here...
     int a[13] = {111,2202,12,34,24,13,456,78,67,44,0,10,100};
