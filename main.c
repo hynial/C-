@@ -94,6 +94,28 @@ void chooseSort1(int arr[],int len){
         printf("\n");
     }
 }
+void quickSort2(int arr[] ,int l,int r){
+    if(l < r){
+        int i = l,j = r,tmpValue = arr[l];
+        while(i < j){
+            while(i< j && tmpValue <= arr[j]){
+                j--;
+            }
+            if(i < j){
+                arr[i++] = arr[j];
+            }
+            while(i < j && tmpValue > arr[i]){
+                i++;
+            }
+            if(i < j){
+                arr[j--] = arr[i];
+            }
+        }
+        arr[i] = tmpValue;
+        myPrinter3(arr,l,i - 1);
+        myPrinter3(arr,i + 1,r);
+    }
+}
 int main(int argc, const char * argv[]) {
     // insert code here...
     int a[13] = {111,2202,12,34,24,13,456,78,67,44,0,10,100};
