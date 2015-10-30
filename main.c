@@ -24,6 +24,7 @@ void quickSort(int arr[],int l,int r){
         quickSort(arr, i + 1, r);
     }
 }
+//简单选择排序
 void chooseSort(int arr[],int len){
     for(int i = 0; i < len - 1; i++){
         int j = i + 1,arrIndex = i,tmp = arr[i];
@@ -39,6 +40,7 @@ void chooseSort(int arr[],int len){
         }
     }
 }
+//改进的选择排序
 void chooseSort1(int arr[],int len){
     int half = len / 2;
     for(int i = 0; i < half; i++){
@@ -94,6 +96,7 @@ void chooseSort1(int arr[],int len){
         printf("\n");
     }
 }
+//快速排序单个函数
 void quickSort2(int arr[] ,int l,int r){
     if(l < r){
         int i = l,j = r,tmpValue = arr[l];
@@ -112,9 +115,35 @@ void quickSort2(int arr[] ,int l,int r){
             }
         }
         arr[i] = tmpValue;
-        myPrinter3(arr,l,i - 1);
-        myPrinter3(arr,i + 1,r);
+        quickSort2(arr,l,i - 1);
+        quickSort2(arr,i + 1,r);
     }
+}
+//冒泡排序
+void bubbleSort(int arr[],int len){
+    //    Method 1
+    //    int tmp;
+    //    for(int i = 0; i < len - 1; i++){
+    //        for(int j = 0; j < len - 1 - i; j++){
+    //            if(arr[j] > arr[j+1]){
+    //                tmp = arr[j];
+    //                arr[j] = arr[j+1];
+    //                arr[j+1] = tmp;
+    //            }
+    //        }
+    //    }
+    //    Method 2
+    int tmp;
+    for (int i =0 ;i < len - 1 ;i++)
+        for (int j=i+1;j < len;j++)
+        {
+            if(arr[i]>arr[j])
+            {
+                tmp =arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp ;
+            }
+        }
 }
 int main(int argc, const char * argv[]) {
     // insert code here...
